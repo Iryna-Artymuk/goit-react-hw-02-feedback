@@ -2,6 +2,7 @@ import { Component } from 'react';
 import Feedback from '../components/Feedback/Feedback';
 import Statistic from './Statistic/Statistic';
 import Section from './Section/Section';
+import Notification from './Notofication/Notification';
 class App extends Component {
   state = {
     good: 0,
@@ -23,11 +24,10 @@ class App extends Component {
     });
   };
 
-  getTotalFeedbackcount = () =>
+  feedbackIsGiven = () =>
     Object.values(this.state).some(element => element > 0);
 
   render() {
-    this.getTotalFeedbackcount();
     return (
       <>
         <Section title=" Leave your feedback">
@@ -39,11 +39,15 @@ class App extends Component {
           />
         </Section>
 
-        {this.getTotalFeedbackcount() && (
-          <Section title="Statistics">
+        <Section title="Statistics">
+          {!this.feedbackIsGiven() && (
+            <Notification text="There is no feedback yet" />
+          )}
+
+          {this.feedbackIsGiven() && (
             <Statistic statisticData={this.state} />
-          </Section>
-        )}
+          )}
+        </Section>
       </>
     );
   }
