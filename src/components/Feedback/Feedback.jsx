@@ -1,4 +1,7 @@
-import { RiEmotionHappyLine, RiEmotionSadLine } from 'react-icons/ri';
+import {
+  RiEmotionHappyLine,
+  RiEmotionSadLine,
+} from 'react-icons/ri';
 import { BsEmojiNeutral } from 'react-icons/bs';
 import { Component } from 'react';
 import PropTypes from 'prop-types';
@@ -16,79 +19,68 @@ class Feedback extends Component {
 
   render() {
     return (
-      <div className={css.card}>
-        <div className={css.ratingContainer}>
-          <div className={css.ratingText}>
-            <p>Give your feedback</p>
-          </div>
-          <div className={css.rating}>
-            <form
-              className={css.ratingForm}
-              onSubmit={event => {
-                event.preventDefault();
-                this.props.addPoint(this.state.rating);
-              }}
-            >
-              <div className={css.inputBox}>
-                <label>
-                  <input
-                    type="radio"
-                    name="rating"
-                    className="superHappy"
-                    id="super-happy"
-                    value="good"
-                    onChange={this.handelChange}
-                    checked={this.state.rating === 'good'}
-                  />
-                  <RiEmotionHappyLine className={css.ratingFormSvg} />
-                </label>
-                <label>
-                  <input
-                    type="radio"
-                    name="rating"
-                    className="neutral"
-                    id="neutral"
-                    value="neutral"
-                    onChange={this.handelChange}
-                    checked={this.state.rating === 'neutral'}
-                  />
-                  <BsEmojiNeutral className={css.ratingFormSvg} />
-                </label>
-                <label>
-                  <input
-                    type="radio"
-                    name="rating"
-                    className="sad"
-                    id="bad"
-                    value="bad"
-                    onChange={this.handelChange}
-                    checked={this.state.rating === 'bad'}
-                  />
-                  <RiEmotionSadLine className={css.ratingFormSvg} />
-                </label>
-              </div>
+      <div className={css.ratingContainer}>
+        <div className={css.rating}>
+          <form
+            className={css.ratingForm}
+            onSubmit={event => {
+              event.preventDefault();
+              this.props.addPoint(this.state.rating);
+              this.setState({
+                rating: '',
+              });
+            }}
+          >
+            <div className={css.inputBox}>
+              <label>
+                <input
+                  type="radio"
+                  name="rating"
+                  className="superHappy"
+                  id="super-happy"
+                  value="good"
+                  onChange={this.handelChange}
+                  checked={this.state.rating === 'good'}
+                />
+                <RiEmotionHappyLine
+                  className={css.ratingFormSvg}
+                />
+              </label>
+              <label>
+                <input
+                  type="radio"
+                  name="rating"
+                  className="neutral"
+                  id="neutral"
+                  value="neutral"
+                  onChange={this.handelChange}
+                  checked={this.state.rating === 'neutral'}
+                />
+                <BsEmojiNeutral
+                  className={css.ratingFormSvg}
+                />
+              </label>
+              <label>
+                <input
+                  type="radio"
+                  name="rating"
+                  className="sad"
+                  id="bad"
+                  value="bad"
+                  onChange={this.handelChange}
+                  checked={this.state.rating === 'bad'}
+                />
+                <RiEmotionSadLine
+                  className={css.ratingFormSvg}
+                />
+              </label>
+            </div>
 
-              <button type="submit"> Submit</button>
-            </form>
-          </div>
-        </div>
-
-        <div className={css.statistics}>
-          <h2> Statistics</h2>
-          <div className={css.statisticsBox}>
-            <div className={css.statisticsInfo}>
-              Good
-              <span>{this.props.good}</span>
-            </div>
-            <div className={css.statisticsInfo}>
-              Neutral
-              <span>{this.props.neutral}</span>
-            </div>
-            <div className={css.statisticsInfo}>
-              Bad
-              <span>{this.props.bad}</span>
-            </div>
-          </div>
+            <button className={css.button} type="submit">
+              {' '}
+              Submit
+            </button>
+          </form>
         </div>
       </div>
     );
