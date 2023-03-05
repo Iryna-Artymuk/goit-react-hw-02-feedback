@@ -24,8 +24,8 @@
 
 .ratingFormSvg {
   fill: rgb(255, 255, 255);
-  height: 3.6rem;
-  width: 3.6rem;
+  height: 30px;
+  width: 30px;
 }
 
 .ratingForm {
@@ -89,8 +89,6 @@ input[class='sad']:focus + .ratingFormSvg {
 }
 
 .button {
-  width: 30%;
-
   padding: 8px;
   background: wheat;
 
