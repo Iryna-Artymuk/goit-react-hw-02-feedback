@@ -39,12 +39,20 @@ class App extends Component {
           />
         </Section>
 
-        <Section title="Statistics">
+        {/* <Section title="Statistics">
           {!this.feedbackIsGiven() && (
             <Notification text="There is no feedback yet" />
           )}
 
           {this.feedbackIsGiven() && (
+            <Statistic statisticData={this.state} />
+          )}
+        </Section> */}
+
+        <Section title="Statistics">
+          {!this.feedbackIsGiven() ? (
+            <Notification text="There is no feedback yet" />
+          ) : (
             <Statistic statisticData={this.state} />
           )}
         </Section>
